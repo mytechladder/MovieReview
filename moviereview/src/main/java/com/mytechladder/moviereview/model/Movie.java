@@ -1,30 +1,36 @@
 package com.mytechladder.moviereview.model;
 
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Movie {
-	
+
 	@Id
-	@GeneratedValue
-	private Long id;
+	private int id;
 	private String title;
 	private String category;
 
-	public Movie(Long id, String title, String category) {
+	protected Movie() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Movie(int id, String title, String category) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.category = category;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

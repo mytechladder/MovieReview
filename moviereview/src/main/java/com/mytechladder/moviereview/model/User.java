@@ -1,38 +1,51 @@
+/**
+ * 
+ */
 package com.mytechladder.moviereview.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+/**
+ * @author samala
+ *
+ */
 
 @Entity
 public class User {
-	
+
 	@Id
-	@GeneratedValue
-	private Long id;
-	private String name ;
-	public User(Long id, String name) {
+	private int id;
+	private String username;
+
+	public User(int id, String username) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.username = username;
 	}
-	public Long getId() {
+
+	protected User() {
+	}
+
+	public int getId() {
 		return id;
 	}
-	public void setId(Long id) {
+
+	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+
+	public String getusername() {
+		return username;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setusername(String username) {
+		this.username = username;
 	}
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + "]";
-	} 
-	
-	
 
 }
