@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 public class Reviews {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name="movie_id")
