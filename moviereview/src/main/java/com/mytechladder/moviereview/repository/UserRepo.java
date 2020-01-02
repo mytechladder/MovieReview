@@ -6,4 +6,5 @@ import com.mytechladder.moviereview.model.User;
 
 public interface UserRepo extends CrudRepository<User, Integer> {
 
+	User findByUsername(String userName);
 }
