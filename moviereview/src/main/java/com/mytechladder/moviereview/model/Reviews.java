@@ -38,10 +38,9 @@ public class Reviews {
 
 
 
-	protected Reviews() {
+	public Reviews() {
 	}
 	
-
 	public Reviews(int movie_id, int user_id, String comment, int rating, Movie movie, User user) {
 		super();
 		this.movie_id = movie_id;
@@ -69,6 +68,15 @@ public class Reviews {
 	public int getUser_id() {
 		return user_id;
 	}
+	
+	public void setMovie_id(int movie_id) {
+		this.movie_id = movie_id;
+	}
+
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
 
 	
 	public String getComment() {
@@ -87,20 +95,5 @@ public class Reviews {
 		this.rating = rating;
 	}
 
-	public Movie getMovie() {
-		return movie;
-	}
-
-	public void setMovie(Movie movie) {
-		this.movie = movie;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 }
