@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.mytechladder.moviereview.model;
 
 import java.util.List;
