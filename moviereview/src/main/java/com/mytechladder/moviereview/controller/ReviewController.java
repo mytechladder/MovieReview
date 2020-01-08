@@ -2,6 +2,7 @@ package com.mytechladder.moviereview.controller;
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,12 +42,23 @@ public class ReviewController {
 	
 	// Usecase/(taskid) -3
 	@GetMapping("/comment")
-	public List<Movie> getMoviesByRatAndCat(@RequestParam int rating, @RequestParam String category){
-		List<Movie> movieList = new ArrayList<Movie>();
+	public List<Reviews> getMoviesByRatAndCat(@RequestParam int rating, @RequestParam String category){
 		
 		// TODO: Write query to retrieve movies filtered by rating and category
+		// 1) get movieid_list from MovieRepo by category. 
+		// 2) get review id list from reviewRepo by movieid_list 
+		// 3) filter out review records by given rating
+		
+		List<Movie> moviesByGivenCategory = movierepo.findByCategory(category);
+		
+		List<Integer> movieIdList = new ArrayList<Integer>();
+		for(Movie mv : moviesByGivenCategory) {
+			movieIdList.add(mv.getId());
+		}
+		
+		List<Reviews> result = reviewrepo.findByRatingAndMovie_idIn(rating, movieIdList);	
 
-		return movieList;
+		return result;
 	};
 	
 	
