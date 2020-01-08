@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-//
 import com.mytechladder.moviereview.model.*;
 import com.mytechladder.moviereview.model.Reviews;
 import com.mytechladder.moviereview.repository.MovieRepo;
@@ -44,11 +43,7 @@ public class ReviewController {
 	@GetMapping("/comment")
 	public List<Reviews> getMoviesByRatAndCat(@RequestParam int rating, @RequestParam String category){
 		
-		// TODO: Write query to retrieve movies filtered by rating and category
-		// 1) get movieid_list from MovieRepo by category. 
-		// 2) get review id list from reviewRepo by movieid_list 
-		// 3) filter out review records by given rating
-		
+		// Get movies by category & prepare movie id list
 		List<Movie> moviesByGivenCategory = movierepo.findByCategory(category);
 		
 		List<Integer> movieIdList = new ArrayList<Integer>();
@@ -56,6 +51,7 @@ public class ReviewController {
 			movieIdList.add(mv.getId());
 		}
 		
+		// Get reviews by rating and prepared movie id list
 		List<Reviews> result = reviewrepo.findByRatingAndMovie_idIn(rating, movieIdList);	
 
 		return result;
